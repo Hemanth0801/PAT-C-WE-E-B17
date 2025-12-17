@@ -7,6 +7,6 @@ guess = ""
 while guess != word:
     guess = input("Enter your guess: ")
     if guess == word:
-        print("Correct!")
+        print("Correct")
     else:
-        print("Wrong guess. Try again!")
+        print("Wrong guess. Try again")
