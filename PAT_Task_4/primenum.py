@@ -3,7 +3,7 @@ primenumber=[]  #prime will store here
 for i in num:
     if i > 1 :      #prime num should be greater than 1
         is_prime=True
-        for j in range(2,i):  #range never includes the last valie(num-1)
+        for j in range(2,i):  #range never includes the last value(num-1)
             if i % j == 0:    #is the remainder is 0 not prime
                 is_prime=False
                 break
