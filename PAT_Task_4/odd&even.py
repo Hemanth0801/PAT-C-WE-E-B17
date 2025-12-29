@@ -3,7 +3,7 @@ odd_num=[]   #odd num wil store here
 even_num=[]  #even num will store here
 for i in num:     #using loop we are spliting into odd and even
     if i % 2 == 0:
-        even_num.append(i)  #append will add the number at the end of the list
+        even_num.append(i)  #append will add the number at the even num
     else:
         odd_num.append(i)
 print("even numbers:" ,even_num)
