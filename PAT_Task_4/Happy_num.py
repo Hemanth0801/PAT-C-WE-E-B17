@@ -1,5 +1,16 @@
-# happy num is a num that becomes 1 after repating the square them and add and repeat
-
-def is_happy(number):
-    seen=set()
-    
+numbers = [10,501,22,37,100,999,87,351]
+count = 0
+for num in numbers:
+    temp=num
+    seen=[]
+    while temp != 1 and temp not in seen:
+        seen.append(temp)
+        s = 0
+        while temp > 0:
+            digit=temp % 10
+            s=s+(digit * digit)
+            temp=temp // 10
+        temp=s
+    if temp==1:
+        count=count + 1
+print("Total Happy Numbers:", count)
