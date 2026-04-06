@@ -1,0 +1,62 @@
+-- CREATE DATABASE IMDB;
+USE IMDB;
+CREATE TABLE movie (
+    movie_id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(100),
+    release_year INT
+);
+CREATE TABLE media (
+    media_id INT PRIMARY KEY AUTO_INCREMENT,
+    movie_id INT,
+    media_type VARCHAR(50),  -- image / video
+    media_url VARCHAR(255),
+    FOREIGN KEY (movie_id) REFERENCES movie(movie_id)
+);
+CREATE TABLE genre (
+    genre_id INT PRIMARY KEY AUTO_INCREMENT,
+    genre_name VARCHAR(50)
+);
+CREATE TABLE movie_genre (
+    movie_id INT,
+    genre_id INT,
+    PRIMARY KEY (movie_id, genre_id),
+    FOREIGN KEY (movie_id) REFERENCES movie(movie_id),
+    FOREIGN KEY (genre_id) REFERENCES genre(genre_id)
+);
+CREATE TABLE users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50)
+);
+CREATE TABLE review (
+    review_id INT PRIMARY KEY AUTO_INCREMENT,
+    movie_id INT,
+    user_id INT,
+    rating INT,
+    comment TEXT,
+    FOREIGN KEY (movie_id) REFERENCES movie(movie_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+CREATE TABLE artist (
+    artist_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100)
+);
+INSERT INTO movie (title, release_year)
+VALUES ('RRR', 2022), ('KGF', 2018);
+
+INSERT INTO media (movie_id, media_type, media_url)
+VALUES (1, 'image', 'img1.jpg'),
+       (1, 'video', 'trailer.mp4');
+
+INSERT INTO genre (genre_name)
+VALUES ('Action'), ('Drama');
+
+INSERT INTO movie_genre VALUES (1,1), (1,2);
+
+INSERT INTO users (username)
+VALUES ('hemanth'), ('user2');
+
+INSERT INTO review (movie_id, user_id, rating, comment)
+VALUES (1,1,5,'Super movie'), (1,2,4,'Good');
+
+INSERT INTO artist (name)
+VALUES ('NTR'), ('Hemu');
