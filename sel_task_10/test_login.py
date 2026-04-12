@@ -25,8 +25,15 @@ class Testlogin:
         self.driver.find_element(By.XPATH, '//input[@class="submit-button btn_action"]').click()
         time.sleep(2)
 
+        assert "Swag Labs" in self.driver.title
+        assert "saucedemo" in self.driver.current_url
+        assert "inventory" in self.driver.current_url
+
     def test_negative_login(self,setup):
         self.driver.find_element(By.ID, 'user-name').send_keys('incorrect')
         self.driver.find_element(By.ID, 'password').send_keys('no_secret_sauce')
         self.driver.find_element(By.XPATH, '//input[@class="submit-button btn_action"]').click()
         time.sleep(2)
+
+        error = self.driver.find_element(By.TAG_NAME, "h3").text
+        assert " Failed " in error
